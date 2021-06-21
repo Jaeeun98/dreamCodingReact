@@ -12,9 +12,9 @@ class Habit extends Component {
     }
     render() {
         const { name, count } = this.props.habit;  
+
         //habit 안에 있는 것들이 {} 안에 있는 변수에 적용됨
-        return (
-            
+        return (  
             <li className='habit'>
                 <span className="habit-name">{name}</span>
                 <span className="habit-count">{count}</span>

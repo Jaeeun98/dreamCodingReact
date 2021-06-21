@@ -11,15 +11,25 @@ class Habits extends Component {
     };
     //업데이트 될 데이터가 있는 곳에서 함수를 만드는 것이 좋음
     handleIncrement = (habit) => {
-        habit.count++; 
-        this.setState(this.state);
-        
+        const habits = [...this.state.habits];
+        const idx = habits.indexOf(habit); 
+        habits[idx].count++;
+        this.setState({ habits });
     }
     handleDecrement = (habit) => {
-        console.log(habit.name);
+        const habits = [...this.state.habits];
+        const idx = habits.indexOf(habit); 
+        
+        if(habit.count <= 0) {
+            habits[idx].count = 0
+        } else {
+            habits[idx].count--;
+        }
+        this.setState({ habits });
     }
     handleDelete = (habit) => {
-        console.log(`${habit.name}`);
+        const habits = this.state.habits.filter(item => item.id !== habit.id);
+        this.setState({ habits });
     }
 
     render() {
@@ -27,7 +37,7 @@ class Habits extends Component {
             <ul>
                 {this.state.habits.map(habit => 
                     <Habit 
-                        key={habit.id} 
+                        key={habit.id}   //key는 props에 해당되지x
                         habit={habit} 
                         onIncrement={this.handleIncrement}
                         onDecrement={this.handleDecrement}
