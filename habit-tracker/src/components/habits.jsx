@@ -16,12 +16,13 @@ class Habits extends Component {
                         <Habit 
                             key={habit.id}   //key는 props에 해당되지x
                             habit={habit} 
-                            onIncrement={this.handleIncrement}
-                            onDecrement={this.handleDecrement}
-                            onDelete={this.handleDelete}
+                            onIncrement={this.props.onIncrement}
+                            onDecrement={this.props.onDecrement}
+                            onDelete={this.props.onDelete}
                         />
                     )}
                 </ul>
+                <button className="resetBtn" onClick={this.props.onReset}>Reset</button>
             </>
             
         )
