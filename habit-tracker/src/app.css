@@ -64,10 +64,10 @@ button {
   background:#007502;
 }
 
-section > form {
+form {
   padding:2rem 0 0 1rem;
 }
-form > input {
+form > input, form > button {
   padding: 0.5rem;
   font-size:1.5rem;
 }
