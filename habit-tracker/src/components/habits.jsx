@@ -8,6 +8,7 @@ class Habits extends Component {
         this.props.onAdd(value);
     } 
     render() {
+        console.log('render, habits')
         return (
             <>
                 <HabitAddForm onAdd={this.handleAdd}/>
