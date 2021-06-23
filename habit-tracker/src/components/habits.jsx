@@ -8,16 +8,14 @@ class Habits extends Component {
         this.props.onAdd(value);
     } 
     render() {
-        
         return (
-            <>
+            <div>
                 <HabitAddForm onAdd={this.handleAdd}/>
                 <ul>
                     {this.props.habits.map(habit => 
                         <Habit 
                             key={habit.id}   //key는 props에 해당되지x
                             habit={habit}
-                            count={habit.count} 
                             onIncrement={this.props.onIncrement}
                             onDecrement={this.props.onDecrement}
                             onDelete={this.props.onDelete}
@@ -25,7 +23,7 @@ class Habits extends Component {
                     )}
                 </ul>
                 <button className="resetBtn" onClick={this.props.onReset}>Reset</button>
-            </>
+            </div>
             
         )
     }

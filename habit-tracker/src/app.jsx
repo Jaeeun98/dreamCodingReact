@@ -13,27 +13,28 @@ class App extends Component {
   };
   //업데이트 될 데이터가 있는 곳에서 함수를 만드는 것이 좋음
 
-  handleIncrement = (habit) => {
-    const habits = [...this.state.habits];
-    const idx = habits.indexOf(habit); 
-    habits[idx].count++;
+  handleIncrement = habit => {
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id){
+        return { ...habit, count:habit.count + 1 } //카운트를 가져오고, 그 위에 다시 덮어씀
+      }
+      return item;  //기존에 받은 item 리턴
+    })
     this.setState({ habits });
   }
-  handleDecrement = (habit) => {
-    const habits = [...this.state.habits];
-    const idx = habits.indexOf(habit); 
-
-    if(habit.count <= 0) {
-        habits[idx].count = 0
-    } else {
-        habits[idx].count--;
-    }
+  handleDecrement = habit => {
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id){
+        const count = habit.count - 1
+        return { ...habit, count: count < 0 ? 0 : count } 
+      }
+      return item;
+    })
     this.setState({ habits });
   } 
-  handleDelete = (habit) => {
+  handleDelete = habit => {
     const habits = this.state.habits.filter(item => item.id !== habit.id);
     this.setState({ habits });
-
   }
   handleAdd = value => {
     const habits = [...this.state.habits, {id : Date.now(), name:value, count:0}];
@@ -41,20 +42,21 @@ class App extends Component {
   }
   handleReset = () => {
     const habits = this.state.habits.map(habit => {
-      habit.count = 0;
-      return habit;
-    })
+      if(habit.count !== 0){
+        return { ...habit, count: 0 }; 
+      }
+        return habit;
+    });
     this.setState({ habits })
   }
   
   render(){
     return (
-      <>
-        <header className="navBar">
-          <NavBar resultCount={this.state.habits.filter(item => item.count > 0).length} /> 
-        </header>
+      <div>
+        <NavBar 
+          resultCount={this.state.habits.filter(item => item.count > 0).length} 
+        /> 
         <Habits 
-            name2 = {this.state.name2}
             habits={this.state.habits}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
@@ -62,7 +64,7 @@ class App extends Component {
             onAdd={this.handleAdd}
             onReset={this.handleReset}
         />
-      </>
+      </div>
     )
   }
 }
