@@ -12,7 +12,6 @@ class HabitAddForm extends PureComponent {
     }
     
     render() {
-        console.log('render, form')
         return (
             <form onSubmit={this.onSubmit}>
                 <input 

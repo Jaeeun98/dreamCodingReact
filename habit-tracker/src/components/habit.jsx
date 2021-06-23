@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class Habit extends Component {
     handleIncrement = () => {
         this.props.onIncrement(this.props.habit);
-        console.log(this.props.habit)
     }
     handleDecrement = () => {
         this.props.onDecrement(this.props.habit);
@@ -12,8 +11,8 @@ class Habit extends Component {
         this.props.onDelete(this.props.habit);
     }
     render() {
-        const { name, count } = this.props.habit;  
-
+        const { name } = this.props.habit;  
+        const { count } = this.props;
         //habit 안에 있는 것들이 {} 안에 있는 변수에 적용됨
         return (  
             <li className='habit'>

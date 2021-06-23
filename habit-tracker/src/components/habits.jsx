@@ -8,7 +8,7 @@ class Habits extends Component {
         this.props.onAdd(value);
     } 
     render() {
-        console.log('render, habits')
+        
         return (
             <>
                 <HabitAddForm onAdd={this.handleAdd}/>
@@ -16,7 +16,8 @@ class Habits extends Component {
                     {this.props.habits.map(habit => 
                         <Habit 
                             key={habit.id}   //key는 props에 해당되지x
-                            habit={habit} 
+                            habit={habit}
+                            count={habit.count} 
                             onIncrement={this.props.onIncrement}
                             onDecrement={this.props.onDecrement}
                             onDelete={this.props.onDelete}

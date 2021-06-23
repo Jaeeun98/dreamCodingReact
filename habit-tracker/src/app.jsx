@@ -54,6 +54,7 @@ class App extends Component {
           <NavBar resultCount={this.state.habits.filter(item => item.count > 0).length} /> 
         </header>
         <Habits 
+            name2 = {this.state.name2}
             habits={this.state.habits}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
