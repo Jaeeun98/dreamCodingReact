@@ -1,0 +1,26 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.app {
+    width:70%;
+    margin:auto;
+    text-align: center;
+    background-color: #DAEFF5;
+    max-width: 1000px;
+    
+}
+
+button {
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media(max-width:1000px){
+    .app {
+        width:100%;
+    }
+}
