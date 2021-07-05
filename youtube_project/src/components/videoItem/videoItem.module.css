@@ -25,5 +25,6 @@
     font-size:0.6rem;
 }
 .metadata {
-    margin-left:0.2em;
+    margin-left: 0.4em;
+    text-align: left;
 }

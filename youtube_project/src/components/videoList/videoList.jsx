@@ -6,7 +6,7 @@ const VideoList = props => (
     <ul className={styles.videos}>
         {props.videos.map(video => (
             <VideoItem 
-                key={video.id}
+                key={typeof video.id === 'object' ? video.id.videoId : video.id}
                 video={video}
             />
         ))}
