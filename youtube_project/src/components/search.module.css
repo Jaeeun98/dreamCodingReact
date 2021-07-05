@@ -5,9 +5,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #DAEFF5;
 }
 .logo {
-
     display: flex;
     align-items: center;
     font-size: 20px;
@@ -29,11 +29,10 @@ header {
 .search {
     width: 90%;
     border:none;
-    padding:10px 5px;
+    padding:10px;
     border-radius: 5px;
     margin: 0 5px;
 }
-
 .searchBtn {
     width:35px;
     height: 35px;
