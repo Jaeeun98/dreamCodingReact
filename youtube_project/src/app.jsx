@@ -3,24 +3,20 @@ import './app.css';
 import VideoList from './components/videoList/videoList';
 import Search from './components/search/search';
 
-function App() {
-  const key = 'AIzaSyDNGkQUxzgaQ5uAPFhyn7wz4rRyBDbVp7I'
-  const [videos, setVideo] = useState([]);
+function App({ youtube }) {
+    const [videos, setVideo] = useState([]);
 
-  useEffect(() => { 
-    fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=2&key=${key}`, { method: 'GET' })
-        .then(response => response.json())
-        .then(result =>  setVideo(result.items))
-        .catch(error => console.log('error', error));
-            
-    }, [])
-  
-    function onSearchList(text){
-      fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=2&q=${text}&type=video&type=playlist&key=${key}`, { method: 'GET' })
-        .then(response => response.json())
-        .then(result =>  setVideo(result.items))
-        .catch(error => console.log('error', error));
+    const onSearchList = text =>{
+      youtube
+        .search(text) //
+        .then(videos => setVideo(videos))
     }
+
+    useEffect(() => {
+      youtube
+        .mostPopular() //
+        .then(videos => setVideo(videos))
+    }, [])
 
   return (
     <div className="app">

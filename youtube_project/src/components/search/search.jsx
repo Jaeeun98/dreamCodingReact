@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './search.module.css'
 
-const Search = (props) => {
-    function searchList(e){
+const Search = ({onSearchList}) => {
+    const searchList = e => {
         e.preventDefault(); 
-        props.onSearchList(e.target[0].value); 
+        onSearchList(e.target[0].value); 
         e.target[0].value = '';
     }
 
