@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './search.module.css'
 
-const Search = ({onSearchList}) => {
+const Search = memo(({onSearchList}) => {
     const searchList = e => {
         e.preventDefault(); 
         onSearchList(e.target[0].value); 
@@ -22,6 +22,6 @@ const Search = ({onSearchList}) => {
             </form>
         </header>
     )
-}
+})
 
 export default Search;
