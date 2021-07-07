@@ -9,10 +9,12 @@ function App({ youtube }) {
     const [videos, setVideo] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
-    const onSearchList = text =>{
+  const onSearchList = text => {
+      setSelectedVideo(null);
+
       youtube
         .search(text) //
-        .then(videos => setVideo(videos))
+        .then(videos => setVideo(videos)) 
     }
 
     const selectVideo = (video) => {
@@ -37,7 +39,6 @@ function App({ youtube }) {
         <div className={styles.list}>
           <VideoList videos={videos} onVideoClick={selectVideo} display={selectedVideo ? 'list' : 'grid'}/>
         </div>
-        
       </section>
       
     </div>
