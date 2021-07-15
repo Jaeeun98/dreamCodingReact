@@ -6,7 +6,7 @@ const VideoList = ({ videos, onVideoClick, display}) => (
     <ul className={styles.videos}>
         {videos.map(video => (
             <VideoItem 
-                key={typeof video.id === 'object' ? video.id.videoId : video.id}
+                key={typeof video.id === 'object' ? video.id = video.id.videoId : video.id}
                 video={video}
                 onVideoClick={onVideoClick}
                 display={display}
