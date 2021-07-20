@@ -6,7 +6,6 @@ import Home from './componenets/home/home';
 
 function App({ authService }) {
 
-
   return (
     <div className={styles.app}>
       <Router>
@@ -15,11 +14,10 @@ function App({ authService }) {
           <Route path='/' exact>
             <Login 
               authService={authService} 
-
             />
           </Route>
           <Route path='/home'>
-            <Home />
+            <Home authService={authService}/>
           </Route>
         </Switch>
         

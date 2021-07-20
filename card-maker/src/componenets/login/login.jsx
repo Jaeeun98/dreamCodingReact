@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './login.module.css';
-import {BrowserRouter as Router, Switch, Route, useHistory} from 'react-router-dom';
-import Home from '../home/home';
 
 const Login = ({authService}) => {
 
     const history = useHistory();
+    const goToHome = (userId) => {
+        history.push({
+            pathname :'/home',
+            state : { id: userId },
+        });
+    }
+
     const onLogin = (e) => {
         authService
         .login(e.currentTarget.textContent)
-        .then(value => value && history.push('/home'))
-
-
-
+        .then(data => goToHome(data.user.uid))
     };
+
+    useEffect(() => {
+        authService
+        .onAuthChange(user => {
+            user && goToHome(user.id);
+        })
+    })
 
  return (
      <section className={styles.login}>
