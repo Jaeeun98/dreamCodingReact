@@ -8,33 +8,44 @@ import styles from './home.module.css';
 
 const Home = ({authService}) => {
 
-    const history = useHistory();
-    const cards = [
-        {
+    const [cards, setCards] = useState([
+        {   
+            id : '1',    
             name : 'jaeeun',
             company : 'kakao',
-            team : 'Light',
-            occupation : 'frontend',
+            team : 'light',
+            title : 'frontend',
             mail : 'jaeeun_98@naver.com',
-            introductory : 'hello'
+            message : 'hello',
+            fileName : 'jaeeunFile',
+            fileURL : null
         },
-        {
+        {   
+            id : '2',
             name : 'jaeeun2',
             company : 'kakao',
-            team : 'Dark',
-            occupation : 'frontend',
+            team : 'dark',
+            title : 'frontend',
             mail : 'jaeeun_98@naver.com',
-            introductory : 'hello'
+            message : 'hello',
+            fileName : 'jaeeunFile',
+            fileURL : null
         },
-        {
+        {   
+            id : '3',
             name : 'jaeeun3',
             company : 'kakao',
-            team : 'Colorful',
-            occupation : 'frontend',
+            team : 'colorful',
+            title : 'frontend',
             mail : 'jaeeun_98@naver.com',
-            introductory : 'hello'
+            message : 'hello',
+            fileName : 'jaeeunFile',
+            fileURL : null
         }
-    ]
+    ])
+
+    const history = useHistory();
+    
     const onLogout = () => {
         authService.logout();
     }

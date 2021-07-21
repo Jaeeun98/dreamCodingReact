@@ -2,7 +2,9 @@
 
 .cardMaker {
     flex-basis: 50%;
-    background-color: #fff;
+    background-color: #eee;
+    padding:0.5em 2em;
+    border-right: 1px solid #fff;
 }
 
 .title {
@@ -17,17 +19,3 @@ ul {
     padding:0;
 }
 
-li {
-    list-style: none;
-    margin:2em 0;
-}
-
-.table {
-    margin: auto;
-    width:80%;
-    border:1px solid #222;
-}
-th, td {
-    padding:1em;
-    
-}

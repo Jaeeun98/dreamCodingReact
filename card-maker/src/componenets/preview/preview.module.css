@@ -1,0 +1,61 @@
+@value makerBlack, makerWhite, makerColorful from '../../common/colors.css';
+
+p, h3 {
+    margin:0;
+}
+
+h1 {
+    margin:0.5em 0;
+}
+
+.li {
+    margin: auto;
+    background:#222;
+    border:1px solid #eee;
+    width:50%;
+    border-radius:10px;
+    margin-bottom:1em;
+    color:#fff;
+    padding:1em;
+    display: flex;
+    align-items: center;
+    min-width: 20em;
+}
+
+.img {
+    width:30%;
+    border-radius: 50%;
+}
+
+.text {
+    width:70%;
+    padding-left: 1.5em;
+}
+
+.li p {
+    font-size:0.8em;
+    padding:0.3em 0;
+}
+
+.li.dark {
+    background-color: makerBlack;
+}
+
+.li.light {
+    background-color: makerWhite;
+    color: makerBlack;
+}
+
+.li.colorful {
+    background: makerColorful;
+    
+}
+
+.company::after {
+    content: '';
+    display: block;
+    width:90%;
+    height:2px;
+    background-color: wheat;
+    transform: translateY(0.5em);
+}
