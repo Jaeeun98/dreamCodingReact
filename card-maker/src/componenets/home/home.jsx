@@ -58,11 +58,17 @@ const Home = ({authService}) => {
         })
     })
 
+    const onSubmit = data => {
+       
+        console.log(data[0].name)
+        
+    }
+
     return(
         <section className={styles.maker}>
             <Header onLogout={onLogout}/>
                 <section className={styles.container}>
-                    <CardMaker cards={cards}/>
+                    <CardMaker cards={cards} onSubmit={onSubmit}/>
                     <CardPreview cards={cards}/>
                 </section>
             <Footer />
