@@ -26,7 +26,7 @@ const Home = ({authService}) => {
             company : 'kakao',
             team : 'dark',
             title : 'frontend',
-            mail : 'jaeeun_98@naver.com',
+            mail : 'jaeeun_97@naver.com',
             message : 'hello',
             fileName : 'jaeeunFile',
             fileURL : null
@@ -37,7 +37,7 @@ const Home = ({authService}) => {
             company : 'kakao',
             team : 'colorful',
             title : 'frontend',
-            mail : 'jaeeun_98@naver.com',
+            mail : 'jineun_98@naver.com',
             message : 'hello',
             fileName : 'jaeeunFile',
             fileURL : null
@@ -61,15 +61,23 @@ const Home = ({authService}) => {
     const addCard = card => {
         const update = [...cards, card];
         setCards(update);
-        
-        
+
     }
-    
+
+    const onFormDelete = delCard => {
+        const del = [...cards];
+        const idx = del.findIndex(obj => obj.mail == delCard);
+        del.splice(idx, 1);
+        setCards(del);
+
+        console.log(del)
+    }
+    console.log(cards)
     return(
         <section className={styles.maker}>
             <Header onLogout={onLogout}/>
                 <section className={styles.container}>
-                    <CardMaker cards={cards} addCard={addCard}/>
+                    <CardMaker cards={cards} addCard={addCard} onFormDelete={onFormDelete}/>
                     <CardPreview cards={cards}/>
                 </section>
             <Footer />

@@ -3,10 +3,13 @@ import Btn from '../btn/btn';
 import ImgInput from '../imgInput/imgInput';
 import styles from './card.module.css';
 
-const Card = ({ card }) => {
+const Card = ({ card, onFormDelete }) => {
     const { name, company, team, title, mail, message, fileName, fileURL, } = card; 
     
-    const onSubmit = () => {};
+    const formDelete = (e) => {
+        e.preventDefault();
+        onFormDelete(e.target.form[4].value);
+    };
     return (
         <form className={styles.form}>
             <input className={styles.input} type="text" name='name' value={name} />
@@ -23,7 +26,7 @@ const Card = ({ card }) => {
                 <ImgInput />
             </div>
             
-            <Btn name='Delete' onClick={onSubmit}/>
+            <Btn name='Delete' onClick={formDelete}/>
             
         </form>
       
