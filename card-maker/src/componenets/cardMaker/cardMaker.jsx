@@ -3,8 +3,8 @@ import Card from '../card/card';
 import CardForm from '../cardForm/cardForm';
 import styles from './cardMaker.module.css';
 
-const CardMaker = ({ cards, onSubmit }) => {
-
+const CardMaker = ({ cards, addCard }) => {
+    console.log(cards);
     return (
         <section className={styles.cardMaker}>
             <h1 className={styles.title}>maker</h1>
@@ -14,7 +14,7 @@ const CardMaker = ({ cards, onSubmit }) => {
                     key={card.id}
                 />    
             ))}   
-            <CardForm onSubmit={onSubmit}/> 
+            <CardForm onSubmit={addCard}/> 
                 
         </section>
     
