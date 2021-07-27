@@ -8,41 +8,42 @@ import styles from './home.module.css';
 
 const Home = ({authService}) => {
 
-    const [cards, setCards] = useState([
-        {   
-            id : '1',    
-            name : 'jaeeun',
-            company : 'kakao',
-            team : 'light',
-            title : 'frontend',
-            mail : 'jaeeun_98@naver.com',
-            message : 'hello',
-            fileName : 'jaeeunFile',
-            fileURL : null
-        },
-        {   
-            id : '2',
-            name : 'jaeeun2',
-            company : 'kakao',
-            team : 'dark',
-            title : 'frontend',
-            mail : 'jaeeun_97@naver.com',
-            message : 'hello',
-            fileName : 'jaeeunFile',
-            fileURL : null
-        },
-        {   
-            id : '3',
-            name : 'jaeeun3',
-            company : 'kakao',
-            team : 'colorful',
-            title : 'frontend',
-            mail : 'jineun_98@naver.com',
-            message : 'hello',
-            fileName : 'jaeeunFile',
-            fileURL : null
-        }
-    ])
+    const [cards, setCards] = useState({
+      1: {
+        id: "1",
+        name: "jaeeun",
+        company: "kakao",
+        team: "light",
+        title: "frontend",
+        mail: "jaeeun_98@naver.com",
+        message: "hello",
+        fileName: "jaeeunFile",
+        fileURL: null,
+      },
+      2: {
+        id: "2",
+        name: "jaeeun2",
+        company: "kakao",
+        team: "dark",
+        title: "frontend",
+        mail: "jaeeun_97@naver.com",
+        message: "hello",
+        fileName: "jaeeunFile",
+        fileURL: null,
+      },
+      3: {
+        id: "3",
+        name: "jaeeun3",
+        company: "kakao",
+        team: "colorful",
+        title: "frontend",
+        mail: "jineun_98@naver.com",
+        message: "hello",
+        fileName: "jaeeunFile",
+        fileURL: null,
+      },
+    });
+
 
     const history = useHistory();
     
@@ -58,26 +59,32 @@ const Home = ({authService}) => {
         })
     })
 
-    const addCard = card => {
-        const update = [...cards, card];
-        setCards(update);
-
+    const onFormDelete = card => {
+        setCards(cards => {   //가장 최신의 상태를 가져옴
+            const update = {...cards};
+            delete update[card.id];
+            return update;
+        })
     }
 
-    const onFormDelete = delCard => {
-        const del = [...cards];
-        const idx = del.findIndex(obj => obj.mail == delCard);
-        del.splice(idx, 1);
-        setCards(del);
-
-        console.log(del)
+    const addOrFormChange = card => {
+        setCards(cards => {   //가장 최신의 상태를 가져옴
+            const update = {...cards};
+            update[card.id] = card;
+            return update;
+        })
     }
-    console.log(cards)
+
     return(
         <section className={styles.maker}>
             <Header onLogout={onLogout}/>
                 <section className={styles.container}>
-                    <CardMaker cards={cards} addCard={addCard} onFormDelete={onFormDelete}/>
+                    <CardMaker 
+                        cards={cards} 
+                        addCard={addOrFormChange} 
+                        onFormDelete={onFormDelete}
+                        onFormChange={addOrFormChange}
+                    />
                     <CardPreview cards={cards}/>
                 </section>
             <Footer />
