@@ -20,6 +20,14 @@ const Card = ({ FileInput, card, onFormDelete, onFormChange }) => {
             [e.target.name] : e.target.value,
         })
     }
+
+    const onFileChange = file => {
+        onFormChange({
+            ...card,
+            fileName : file.name,
+            fileURL : file.url,
+        })
+    }
     return (
         <form className={styles.form}>
             <input className={styles.input} type="text" name='name' value={name} onChange={formChange}/>
@@ -33,10 +41,10 @@ const Card = ({ FileInput, card, onFormDelete, onFormChange }) => {
             <input className={styles.input} type="text" name='mail' value={mail} onChange={formChange}/>
             <textarea className={styles.textarea} name="message" value={message} onChange={formChange}/>
             <div className={styles.imgInput}>
-                <FileInput />
+                <FileInput name={fileName} onFileChange={onFileChange}/>
             </div>
             
-            <Btn name='Delete' onClick={formDelete}/>
+            <Btn className={styles.btn} name='Delete' onClick={formDelete}/>
             
         </form>
       

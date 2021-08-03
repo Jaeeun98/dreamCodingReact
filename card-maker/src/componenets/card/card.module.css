@@ -38,7 +38,7 @@
 .textarea:focus,
 .select:focus,
 .btn:focus {
-    outline: 0;;
+    outline: 0;
 }
 
 .textarea {
