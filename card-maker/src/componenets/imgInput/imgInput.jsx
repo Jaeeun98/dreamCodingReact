@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styles from './imgInput.module.css';
 
-const ImgInput = (props) => (
-            <button>IMAGE</button>
-    );
+const ImgInput = ({imgUploader}) => {
+
+  return <button>Img</button>
+};
+
+
+    
 
 export default ImgInput;

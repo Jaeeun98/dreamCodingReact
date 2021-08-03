@@ -1,17 +1,12 @@
 import React from 'react';
 import Btn from '../btn/btn';
-import ImgInput from '../imgInput/imgInput';
 import styles from './card.module.css';
 
-const Card = ({ card, onFormDelete, onFormChange }) => {
+const Card = ({ FileInput, card, onFormDelete, onFormChange }) => {
     const { name, company, team, title, mail, message, fileName, fileURL, } = card; 
     
-    const formDelete = (e) => {
-        e.preventDefault();
-        onFormDelete({
-            ...card, 
-            [e.target.name] : e.target.value,
-        })
+    const formDelete = () => {
+        onFormDelete(card)
     };
     
     const formChange = (e) => {
@@ -38,7 +33,7 @@ const Card = ({ card, onFormDelete, onFormChange }) => {
             <input className={styles.input} type="text" name='mail' value={mail} onChange={formChange}/>
             <textarea className={styles.textarea} name="message" value={message} onChange={formChange}/>
             <div className={styles.imgInput}>
-                <ImgInput />
+                <FileInput />
             </div>
             
             <Btn name='Delete' onClick={formDelete}/>

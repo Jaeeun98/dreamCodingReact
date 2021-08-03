@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
 import Login from './componenets/login/login';
 import styles from './app.module.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './componenets/home/home';
 
-function App({ authService }) {
+function App({ FileInput, authService }) {
 
   return (
     <div className={styles.app}>
@@ -17,7 +16,7 @@ function App({ authService }) {
             />
           </Route>
           <Route path='/home'>
-            <Home authService={authService}/>
+            <Home authService={authService} FileInput={FileInput}/>
           </Route>
         </Switch>
         

@@ -6,7 +6,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './home.module.css';
 
-const Home = ({authService}) => {
+const Home = ({FileInput, authService}) => {
 
     const [cards, setCards] = useState({
       1: {
@@ -80,6 +80,7 @@ const Home = ({authService}) => {
             <Header onLogout={onLogout}/>
                 <section className={styles.container}>
                     <CardMaker 
+                        FileInput={FileInput}
                         cards={cards} 
                         addCard={addOrFormChange} 
                         onFormDelete={onFormDelete}
