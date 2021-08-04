@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import ReactDOM from 'react-dom';
 import './index.module.css';
 import App from './app';
@@ -11,9 +11,9 @@ const authService = new AuthService();
 const imgUploader = new ImgUploader();
 const database = new Database();
 
-const FileInput = props => (
+const FileInput = memo(props => (
   <ImgInput {...props} imgUploader={imgUploader} /> 
-)
+))
 
 //const fileInput = <ImgInput {...props} imgUploader={imgUploader} />  
 //이런식으로 설정하면 확장성이 떨어짐

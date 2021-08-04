@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import Btn from '../btn/btn';
 import styles from '../card/card.module.css';
 
-const CardForm = ({ FileInput, onSubmit }) => {
+const CardForm = memo(({ FileInput, onSubmit }) => {
 
   const formRef = useRef();
   const [file, setFile] = useState({fileName : null, fileURL : null})
@@ -56,9 +56,9 @@ const CardForm = ({ FileInput, onSubmit }) => {
   
       <Btn type='submit' name="Add" />
     </form>
-  );  
+  ) 
 }
-
+)
 
 
 export default CardForm;

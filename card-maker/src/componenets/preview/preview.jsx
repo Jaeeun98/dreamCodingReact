@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './preview.module.css';
 
-const Preview = ({ card }) => {
+const Preview = memo(({ card }) => {
 
-    const DEFAULT_IMG = '/images/default_logo.png';
-    const { name, company, team, title, mail, message, fileURL, } = card; 
-    const url = fileURL || DEFAULT_IMG;
+  const DEFAULT_IMG = '/images/default_logo.png';
+  const { name, company, team, title, mail, message, fileURL, } = card; 
+  const url = fileURL || DEFAULT_IMG;
 
-    return (
-      <li className={`${styles.li} ${getStyles(team)}`} >
-        <img className={styles.img} src={url} alt="profile" />
-        <div className={styles.text}>
-          <h1 className={styles.name}>{name}</h1>
-          <p className={styles.company}>{company}</p>
-          <p className={styles.title}>{title}</p>
-          <p className={styles.mail}>{mail}</p>
-          <p className={styles.message}>{message}</p>
-        </div>
-      </li>
-    );
-}    
+  return (
+    <li className={`${styles.li} ${getStyles(team)}`} >
+      <img className={styles.img} src={url} alt="profile" />
+      <div className={styles.text}>
+        <h1 className={styles.name}>{name}</h1>
+        <p className={styles.company}>{company}</p>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.mail}>{mail}</p>
+        <p className={styles.message}>{message}</p>
+      </div>
+    </li>
+  )
+})
 
 function getStyles(team){
     switch(team) {
