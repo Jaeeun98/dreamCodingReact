@@ -25,7 +25,7 @@ const Home = ({FileInput, authService, database}) => {
             setCards(cards);
         })  //stopSync에 할당만 함, 실행되지 않음
         return () => stopSync(); //unmount 되었을 때 return이 실행됨
-    }, [userId])
+    }, [userId, database])
 
     useEffect(() => {
         authService.onAuthChange(user => {
@@ -35,7 +35,7 @@ const Home = ({FileInput, authService, database}) => {
                 history.push('/')
             }
         })
-    })
+    }, [history, authService])
 
     const onFormDelete = card => {
         setCards(cards => {   //가장 최신의 상태를 가져옴

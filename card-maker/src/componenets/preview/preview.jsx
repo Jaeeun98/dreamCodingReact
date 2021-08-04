@@ -4,12 +4,12 @@ import styles from './preview.module.css';
 const Preview = ({ card }) => {
 
     const DEFAULT_IMG = '/images/default_logo.png';
-    const { name, company, team, title, mail, message, fileName, fileURL, } = card; 
+    const { name, company, team, title, mail, message, fileURL, } = card; 
     const url = fileURL || DEFAULT_IMG;
 
     return (
       <li className={`${styles.li} ${getStyles(team)}`} >
-        <img className={styles.img} src={url} alt="profile photo" />
+        <img className={styles.img} src={url} alt="profile" />
         <div className={styles.text}>
           <h1 className={styles.name}>{name}</h1>
           <p className={styles.company}>{company}</p>

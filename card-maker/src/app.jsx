@@ -2,7 +2,6 @@ import Login from './componenets/login/login';
 import styles from './app.module.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './componenets/home/home';
-import Database from './sever/database';
 
 function App({ FileInput, authService, database }) {
 

@@ -3,7 +3,7 @@ import Btn from '../btn/btn';
 import styles from './card.module.css';
 
 const Card = ({ FileInput, card, onFormDelete, onFormChange }) => {
-    const { name, company, team, title, mail, message, fileName, fileURL, } = card; 
+    const { name, company, team, title, mail, message, fileName, } = card; 
     
     const formDelete = () => {
         onFormDelete(card)
