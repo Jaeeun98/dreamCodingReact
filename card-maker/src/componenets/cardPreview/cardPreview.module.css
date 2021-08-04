@@ -3,6 +3,7 @@
 .cardPreview {
     flex-basis: 50%;
     background-color: #eee;
+    overflow-y: auto;
 }
 
 .title {

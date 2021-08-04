@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.module.css';
 import App from './app';
 import AuthService from './sever/auth_service';
-import ImgUploader from './componenets/imgInput/imgUploader';
+import ImgUploader from './sever/imgUploader';
 import ImgInput from './componenets/imgInput/imgInput';
+import Database from './sever/database';
 
 const authService = new AuthService();
 const imgUploader = new ImgUploader();
+const database = new Database();
+
 const FileInput = props => (
   <ImgInput {...props} imgUploader={imgUploader} /> 
 )
@@ -23,7 +26,11 @@ const FileInput = props => (
 
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={authService} FileInput={FileInput}/>
+    <App
+      authService={authService}
+      FileInput={FileInput}
+      database={database}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );

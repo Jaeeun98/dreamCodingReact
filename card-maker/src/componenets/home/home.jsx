@@ -6,54 +6,32 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './home.module.css';
 
-const Home = ({FileInput, authService}) => {
-
-    const [cards, setCards] = useState({
-      1: {
-        id: "1",
-        name: "jaeeun",
-        company: "kakao",
-        team: "light",
-        title: "frontend",
-        mail: "jaeeun_98@naver.com",
-        message: "hello",
-        fileName: "jaeeunFile",
-        fileURL: null,
-      },
-      2: {
-        id: "2",
-        name: "jaeeun2",
-        company: "kakao",
-        team: "dark",
-        title: "frontend",
-        mail: "jaeeun_97@naver.com",
-        message: "hello",
-        fileName: "jaeeunFile",
-        fileURL: null,
-      },
-      3: {
-        id: "3",
-        name: "jaeeun3",
-        company: "kakao",
-        team: "colorful",
-        title: "frontend",
-        mail: "jineun_98@naver.com",
-        message: "hello",
-        fileName: "jaeeunFile",
-        fileURL: null,
-      },
-    });
-
+const Home = ({FileInput, authService, database}) => {
 
     const history = useHistory();
+    const historyState = history?.location?.state;
+    const [cards, setCards] = useState({});
+    const [userId, setUserId] = useState(historyState && historyState.id);
     
     const onLogout = () => {
         authService.logout();
     }
 
     useEffect(() => {
+        if(!userId){
+            return;
+        }
+        const stopSync = database.syncCards(userId, cards => {
+            setCards(cards);
+        })  //stopSync에 할당만 함, 실행되지 않음
+        return () => stopSync(); //unmount 되었을 때 return이 실행됨
+    }, [userId])
+
+    useEffect(() => {
         authService.onAuthChange(user => {
-            if(!user) {
+            if(user) {
+                setUserId(user.uid);
+            } else {
                 history.push('/')
             }
         })
@@ -64,7 +42,9 @@ const Home = ({FileInput, authService}) => {
             const update = {...cards};
             delete update[card.id];
             return update;
-        })
+        });
+        database.removeCard(userId, card)
+        
     }
 
     const addOrFormChange = card => {
@@ -72,7 +52,9 @@ const Home = ({FileInput, authService}) => {
             const update = {...cards};
             update[card.id] = card;
             return update;
-        })
+        });
+        database.saveCard(userId, card);
+
     }
 
     return(
