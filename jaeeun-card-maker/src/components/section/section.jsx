@@ -4,11 +4,11 @@ import Header from '../header/header';
 import Login from '../login/login';
 import styles from './section.module.css';
 
-const Section = (props) => {
+const Section = ({ auth }) => {
     return(
         <section className={styles.section}>
             <Header />
-            <Login />
+            <Login auth={auth}/>
             <Footer />
         </section>
     )

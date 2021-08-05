@@ -2,10 +2,10 @@ import React from 'react';
 import './app.css';
 import Section from './components/section/section';
 
-function App() {
+function App({ auth }) {
   return (
     <div className='app'>
-      <Section />
+      <Section auth={auth}/>
     </div>
     
   );
