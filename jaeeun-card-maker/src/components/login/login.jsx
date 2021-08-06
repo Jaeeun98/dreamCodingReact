@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './login.module.css';
+import Header from '../header/header';
+import Footer from '../footer/footer';
+
 
 const Login = ({ auth }) => {
 
+    const [user, setUser] = useState();
+
+    const history = useHistory();
     const login = (e) => {
-        e.target.innerText.includes('Google') ? auth.authLogin('Google') : auth.authLogin('Github')
+        auth.authLogin(e.target.innerText)
+        .then(data => homeMove(data)); 
     }
 
 
-    return(
-        <div className={styles.login}>
-            <h2>LOGIN</h2>
-            <div className={styles.btn}>
-                <button className={styles.google} onClick={login}>Google Login</button>
-                <button className={styles.github} onClick={login}>Github Login</button>
-            </div>
-            
-        </div>
-    )
+    const homeMove = () => {
+        history.push('/home');
+    }
+
+    return (
+      <section className={styles.login}>
+        <Header />
+        <section className={styles.section}>
+          <h2>LOGIN</h2>
+          <div className={styles.btn}>
+            <button className={styles.google} onClick={login}>
+              Google
+            </button>
+            <button className={styles.github} onClick={login}>
+              Github
+            </button>
+          </div>
+        </section>
+
+        <Footer />
+      </section>
+    );
 }
 
 export default Login;

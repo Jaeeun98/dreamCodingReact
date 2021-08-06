@@ -1,12 +1,13 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseApp from './firebase';
+import firebaseApp from './firebase';  
+//초기화를 거쳐야
 
 class Auth {
 
     authLogin(text){
         const provider = new firebase.auth[`${text}AuthProvider`]();
-        firebase.auth().signInWithPopup(provider)
+        return firebase.auth().signInWithPopup(provider);   
     }
 }
 

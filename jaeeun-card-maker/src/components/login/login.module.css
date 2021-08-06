@@ -1,6 +1,11 @@
 .login {
-    padding-bottom:1rem;
+    width:25rem;
+    height:20rem;
     background-color: #fff;
+}
+
+.section {
+    padding-bottom: 1rem;
 }
 
 .btn button {
