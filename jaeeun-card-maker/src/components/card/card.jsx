@@ -1,14 +1,20 @@
 import React from 'react';
 import CardMaker from '../cardMaker/cardMaker';
 import CardPreview from '../cardPreview/cardPreview';
+import Footer from '../footer/footer';
+import Header from '../header/header';
 import styles from './card.module.css';
 
-const Card = (props) => {
+const Card = ({ user }) => {
     return(
-        <div className={styles.card}>
-            <CardMaker />
-            <CardPreview />
-        </div>
+        <section className={styles.card}>
+            <Header />
+            <section className={styles.section}>
+                <CardMaker user={user}/>
+                <CardPreview user={user}/>
+            </section>
+            <Footer />
+        </section>
     )
 }
 

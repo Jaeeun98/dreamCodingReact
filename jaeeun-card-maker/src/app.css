@@ -3,11 +3,10 @@
   height:100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  
   background-color: #626262;
 }
 
-section{
-  background-color: #fff;
+section {
   text-align: center;
 }
