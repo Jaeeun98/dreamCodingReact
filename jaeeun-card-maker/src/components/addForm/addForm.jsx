@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styles from '../cardMaker/cardMaker.module.css'
+import ImgAdd from '../imgAdd/imgAdd';
 
 const AddForm = ({ onAddForm }) => {
 
@@ -32,7 +33,9 @@ const AddForm = ({ onAddForm }) => {
         <input type='text' name='job' placeholder='job' />
         <input type='text' name='mail' placeholder='e-mail' />
         <textarea name='mes' placeholder='message'></textarea>
-        <button className={styles.img}>IMGBTN</button>
+        <div className={styles.img}>
+            <ImgAdd />
+        </div>
         <button type='button' className={styles.add} name='add' onClick={addForm}>Add</button>
       </form>
     );

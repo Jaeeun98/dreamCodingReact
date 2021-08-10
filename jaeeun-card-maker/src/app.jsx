@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router
 import Card from './components/card/card';
 import Login from './components/login/login';
 
-function App({ auth }) {
+function App({ auth, storage }) {
   const [user, setUser] = useState({
     0: {
       id: 0,
@@ -14,6 +14,8 @@ function App({ auth }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
+      fileName : 'jaeeunFile',
+      fileURL : null
     },
     1: {
       id: 1,
@@ -23,6 +25,8 @@ function App({ auth }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
+      fileName : 'jaeeunFile',
+      fileURL : null
     },
     2: {
       id: 2,
@@ -32,6 +36,8 @@ function App({ auth }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
+      fileName : 'jaeeunFile',
+      fileURL : null
     },
   });
   const onAddForm = card => {
@@ -51,15 +57,25 @@ function App({ auth }) {
     
   }
 
+  const onImgAdd = async img => {
+    const snapshot = await storage.imgAdd(img);
+    console.log(snapshot);
+  }
+
   return (
     <div className="app">
       <Router>
         <Switch>
-          <Route path="/" exact>  
+          <Route path="/" exact>
             <Login auth={auth} />
           </Route>
           <Route path="/home">
-            <Card user={user} onAddForm={onAddForm} onDeleteForm={onDeleteForm}/>
+            <Card
+              user={user}
+              onAddForm={onAddForm}
+              onDeleteForm={onDeleteForm}
+              onImgAdd={onImgAdd}
+            />
           </Route>
         </Switch>
       </Router>
