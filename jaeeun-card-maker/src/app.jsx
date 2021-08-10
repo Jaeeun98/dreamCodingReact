@@ -35,7 +35,11 @@ function App({ auth }) {
     },
   });
   const onAddForm = card => {
-    setUser(user.concat(card));
+    setUser(user => {
+      const update = {...user};
+      update[card.id] = card;
+      return update;
+    });
   }
 
   const onDeleteForm = e => {
