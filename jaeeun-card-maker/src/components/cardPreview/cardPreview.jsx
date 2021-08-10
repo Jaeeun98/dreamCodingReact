@@ -7,7 +7,7 @@ const CardPreview = ({ user }) => {
         <h1>Card Preview</h1>
         {user.map(user => (
           <ul className={styles.card}>
-              <img className={styles.img} src="images/default_logo.png" alt="deault" />
+              <img className={styles.img} src='images/default_logo.png' alt='deault' />
             <div className={styles.text}>
                 <h3>{user.name}, {user.company}</h3>
                 <p>{user.mail}</p>

@@ -32,8 +32,11 @@ function App({ auth }) {
       job : 'frontend',
       mail : 'kju9705@gmail.com',
       mes : 'Hello'
-  },
+    },
 ])
+  const onAddForm = card => {
+    setUser(user.concat(card));
+  }
 
   return (
     <div className="app">
@@ -43,7 +46,7 @@ function App({ auth }) {
             <Login auth={auth} />
           </Route>
           <Route path="/home">
-            <Card user={user}/>
+            <Card user={user} onAddForm={onAddForm}/>
           </Route>
         </Switch>
       </Router>

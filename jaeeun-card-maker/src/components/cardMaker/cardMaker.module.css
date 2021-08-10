@@ -31,7 +31,7 @@
     background-color: #ffe7e8;
 }
 
-.del {
+.del, .add {
     background-color: #385461;
     color:#fff;
 }
