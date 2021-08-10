@@ -7,7 +7,7 @@ import Login from './components/login/login';
 function App({ auth }) {
   const [user, setUser] = useState({
     0: {
-      id: 1,
+      id: 0,
       name: "jaeeun",
       company: "kakao",
       color: "light",
@@ -16,7 +16,7 @@ function App({ auth }) {
       mes: "Hello",
     },
     1: {
-      id: 2,
+      id: 1,
       name: "jaeeun2",
       company: "kakao",
       color: "light",
@@ -25,7 +25,7 @@ function App({ auth }) {
       mes: "Hello",
     },
     2: {
-      id: 3,
+      id: 2,
       name: "jaeeun3",
       company: "kakao",
       color: "light",
@@ -42,9 +42,12 @@ function App({ auth }) {
     });
   }
 
-  const onDeleteForm = e => {
-    const formKey = e.target.__reactFiber$so3plhv4yul.return.key;
-    
+  const onDeleteForm = cardId => {
+    setUser(user => {
+      const update = {...user};
+      delete update[cardId];
+      return update;
+    })
     
   }
 

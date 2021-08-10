@@ -5,17 +5,14 @@ import styles from './cardMaker.module.css'
 const CardMaker = ({ user, onAddForm, onDeleteForm }) => {
 
     const deleteForm = e => {
-        onDeleteForm(e);
+        onDeleteForm(e.target.form.classList[0]);
     }
-
-    console.log(Object.values(user).map(value => console.log(value.name)))
-
 
     return(
         <div className={styles.cardMaker}>
             <h1>Card Maker</h1>
             {Object.values(user).map(value => (
-                <form key={value.id} className={styles.form} >
+                <form key={value.id} className={`${value.id} ${styles.form}`} >
                     <input type='text' name='name' value={value.name} />
                     <input type='text' name='company' value={value.company} />
                     <select name='color' value={value.color}>
