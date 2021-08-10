@@ -21,14 +21,29 @@
 }
 
 .text {
+    width:80%;
     margin-left: 2rem;
     text-align: left;
     font-size: 0.7rem;
     line-height: 1.5;
 }
 
+.text p {
+    margin:0;
+    padding:0.1rem 0;
+}
+
 .text h3 {
     margin:0;
     padding:0.4rem 0;
-    border-bottom: 2px solid #fff;
+}
+
+.text h3::after {
+    content: '';
+    background-color: #fff;
+    width: 90%;
+    height:1px;
+    display: block;
+    border-radius: 5px;
+    margin:0.4rem 0; 
 }

@@ -16,10 +16,12 @@ const AddForm = ({ onAddForm }) => {
             mes : e.target.form[5].value
         }
         onAddForm(newCard);
+        formRef.current.reset();
+
     }
 
     return (
-      <form className={styles.form}>
+      <form className={styles.form} ref={formRef}>
         <input type='text' name='name' placeholder='name' />
         <input type='text' name='company' placeholder='company' />
         <select name='color' >

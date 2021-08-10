@@ -5,37 +5,43 @@ import Card from './components/card/card';
 import Login from './components/login/login';
 
 function App({ auth }) {
-  const [user, setUser] = useState([
-    {
-        id : 1,
-        name : 'jaeeun',
-        company : 'kakao',
-        color : 'light',
-        job : 'frontend',
-        mail : 'kju9705@gmail.com',
-        mes : 'Hello'
+  const [user, setUser] = useState({
+    0: {
+      id: 1,
+      name: "jaeeun",
+      company: "kakao",
+      color: "light",
+      job: "frontend",
+      mail: "kju9705@gmail.com",
+      mes: "Hello",
     },
-    {
-        id : 2,
-        name : 'jaeeun2',
-        company : 'kakao',
-        color : 'light',
-        job : 'frontend',
-        mail : 'kju9705@gmail.com',
-        mes : 'Hello'
+    1: {
+      id: 2,
+      name: "jaeeun2",
+      company: "kakao",
+      color: "light",
+      job: "frontend",
+      mail: "kju9705@gmail.com",
+      mes: "Hello",
     },
-    {
-      id : 3,
-      name : 'jaeeun3',
-      company : 'kakao',
-      color : 'light',
-      job : 'frontend',
-      mail : 'kju9705@gmail.com',
-      mes : 'Hello'
+    2: {
+      id: 3,
+      name: "jaeeun3",
+      company: "kakao",
+      color: "light",
+      job: "frontend",
+      mail: "kju9705@gmail.com",
+      mes: "Hello",
     },
-])
+  });
   const onAddForm = card => {
     setUser(user.concat(card));
+  }
+
+  const onDeleteForm = e => {
+    const formKey = e.target.__reactFiber$so3plhv4yul.return.key;
+    
+    
   }
 
   return (
@@ -46,7 +52,7 @@ function App({ auth }) {
             <Login auth={auth} />
           </Route>
           <Route path="/home">
-            <Card user={user} onAddForm={onAddForm}/>
+            <Card user={user} onAddForm={onAddForm} onDeleteForm={onDeleteForm}/>
           </Route>
         </Switch>
       </Router>

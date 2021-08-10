@@ -5,12 +5,12 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './card.module.css';
 
-const Card = ({ user, onAddForm }) => {
+const Card = ({ user, onAddForm, onDeleteForm }) => {
     return(
         <section className={styles.card}>
             <Header />
             <section className={styles.section}>
-                <CardMaker user={user} onAddForm={onAddForm}/>
+                <CardMaker user={user} onAddForm={onAddForm} onDeleteForm={onDeleteForm}/>
                 <CardPreview user={user}/>
             </section>
             <Footer />
