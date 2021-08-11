@@ -20,7 +20,7 @@
     width:100%;
 }
 
-.form button {
+.form > button {
     width: 50%;
     border:none;
     padding:0.5rem 1rem;

@@ -2,14 +2,19 @@ import React from 'react';
 import styles from './cardPreview.module.css'
 
 const CardPreview = ({ user }) => {
+
+
     return (
       <div className={styles.cardPreview}>
         <h1>Card Preview</h1>
         <ul>
-          {Object.values(user).map((value) => (
+          {Object.values(user).map(value => (
             <li key={value.id} className={styles.card}>
               <div className={styles.img}>
-                <img src="images/default_logo.png" alt="deault" />
+                <img 
+                  src={value.fileURL || `images/default_logo.png`}  
+                  alt="deault" 
+                />
               </div>
               <div className={styles.text}>
                 <h3>

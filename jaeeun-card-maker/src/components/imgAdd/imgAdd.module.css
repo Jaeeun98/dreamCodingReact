@@ -1,6 +1,40 @@
-.input {
+.imgContainer {
+    display: flex;
+    align-items: center;
     width:100%;
-    height: 100%;
+    height:100%;
+}
+
+.input {
+    display: none;
+}
+
+.btn {
+    width: 100%;
+    height:100%;
+    border:none;
     cursor: pointer;
-    
+}
+
+.pink {
+    background-color: lightpink;
+}
+
+.loading {
+    margin: auto;
+    width:1.5em;
+    height:1.5em;
+    border-radius: 50%;
+    border:3px solid lightgray;
+    border-top:3px solid #f1f1f1;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

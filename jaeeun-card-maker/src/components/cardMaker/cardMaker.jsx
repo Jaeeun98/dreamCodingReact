@@ -25,7 +25,7 @@ const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
                     <input type='text' name='mail' value={value.mail} />
                     <textarea name='mes' value={value.mes}></textarea>
                     <div className={styles.img}>
-                        <ImgAdd onImgAdd={onImgAdd} storage={storage}/>
+                        <ImgAdd onImgAdd={onImgAdd} storage={storage} name={value.fileName}/>
                     </div>
                     <button type='button' className={styles.del} onClick={deleteForm}>DELETE</button>
                 </form>

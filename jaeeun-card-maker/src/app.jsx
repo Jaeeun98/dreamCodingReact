@@ -14,7 +14,7 @@ function App({ auth, storage }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
-      fileName : 'jaeeunFile',
+      fileName : null,
       fileURL : null
     },
     1: {
@@ -25,7 +25,7 @@ function App({ auth, storage }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
-      fileName : 'jaeeunFile',
+      fileName : null,
       fileURL : null
     },
     2: {
@@ -36,7 +36,7 @@ function App({ auth, storage }) {
       job: "frontend",
       mail: "kju9705@gmail.com",
       mes: "Hello",
-      fileName : 'jaeeunFile',
+      fileName : null,
       fileURL : null
     },
   });
@@ -64,8 +64,6 @@ function App({ auth, storage }) {
       update[cardId].fileURL = file.fileURL
       return update
     })
-    console.log(user);
-    
   }
 
   return (
