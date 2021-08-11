@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import styles from './imgAdd.module.css'
 
-const ImgAdd = ({ onImgAdd }) => {
+const ImgAdd = ({ onImgAdd, storage }) => {
     const [file, setFile] = useState();
 
-    const imgFileAdd = e => {
-        console.log(e);
-        onImgAdd(e.target.files[0]);
+    const imgFileAdd = async e => {
+      const snapshot = await storage.imgAdd(e.target.files[0]);
+      const cardId = e.target.form.classList[0];
+
+      const file = {
+        fileName : snapshot[0].name,
+        fileURL : snapshot[1]
+      }
+
+      onImgAdd(cardId, file);
     }
 
     return (

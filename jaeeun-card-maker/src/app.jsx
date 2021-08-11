@@ -57,9 +57,15 @@ function App({ auth, storage }) {
     
   }
 
-  const onImgAdd = async img => {
-    const snapshot = await storage.imgAdd(img);
-    console.log(snapshot);
+  const onImgAdd = (cardId, file) => {
+    setUser(user => {
+      const update = {...user};
+      update[cardId].fileName = file.fileName
+      update[cardId].fileURL = file.fileURL
+      return update
+    })
+    console.log(user);
+    
   }
 
   return (
@@ -75,6 +81,7 @@ function App({ auth, storage }) {
               onAddForm={onAddForm}
               onDeleteForm={onDeleteForm}
               onImgAdd={onImgAdd}
+              storage={storage}
             />
           </Route>
         </Switch>

@@ -5,7 +5,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './card.module.css';
 
-const Card = ({ user, onAddForm, onDeleteForm, onImgAdd }) => {
+const Card = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
     return (
       <section className={styles.card}>
         <Header />
@@ -15,6 +15,7 @@ const Card = ({ user, onAddForm, onDeleteForm, onImgAdd }) => {
             onAddForm={onAddForm}
             onDeleteForm={onDeleteForm}
             onImgAdd={onImgAdd}
+            storage={storage}
           />
           <CardPreview user={user} />
         </section>

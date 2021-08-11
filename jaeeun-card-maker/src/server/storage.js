@@ -4,18 +4,22 @@ import firebaseApp from './firebase';
 
 class StorageImg {
 
-    imgAdd(imgUrl){
+    async imgAdd(imgUrl){
         const storageRef = firebase.storage().ref();
-        storageRef
-            .child(imgUrl.name)
-            .put(imgUrl).then(snapshot => {
-                return snapshot;
-            })
+        const upload = storageRef.child(imgUrl.name).put(imgUrl);
+
+        const meta = await upload.snapshot.ref.getMetadata().then(data => data);
+        const url = await upload.snapshot.ref.getDownloadURL().then(data => data);
+
+        return [meta, url];
         
 
 
+            
+        
         
 
+        
     }
     
     

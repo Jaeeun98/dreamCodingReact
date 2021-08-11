@@ -3,7 +3,7 @@ import AddForm from '../addForm/addForm';
 import ImgAdd from '../imgAdd/imgAdd';
 import styles from './cardMaker.module.css'
 
-const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd }) => {
+const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
 
     const deleteForm = e => {
         onDeleteForm(e.target.form.classList[0]);
@@ -25,7 +25,7 @@ const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd }) => {
                     <input type='text' name='mail' value={value.mail} />
                     <textarea name='mes' value={value.mes}></textarea>
                     <div className={styles.img}>
-                        <ImgAdd onImgAdd={onImgAdd}/>
+                        <ImgAdd onImgAdd={onImgAdd} storage={storage}/>
                     </div>
                     <button type='button' className={styles.del} onClick={deleteForm}>DELETE</button>
                 </form>
