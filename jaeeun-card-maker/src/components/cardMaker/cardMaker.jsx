@@ -30,7 +30,7 @@ const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
                     <button type='button' className={styles.del} onClick={deleteForm}>DELETE</button>
                 </form>
             ))}
-            <AddForm onAddForm={onAddForm} />
+            <AddForm onAddForm={onAddForm} storage={storage}/>
         </div>
         
     )
