@@ -54,6 +54,8 @@ function App({ auth, storage }) {
       delete update[cardId];
       return update;
     })
+
+    user[cardId].fileName && storage.imgDelete(user[cardId].fileName);
     
   }
 

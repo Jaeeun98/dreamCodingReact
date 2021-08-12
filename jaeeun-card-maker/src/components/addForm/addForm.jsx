@@ -44,7 +44,7 @@ const AddForm = ({ onAddForm, storage }) => {
         <input type='text' name='mail' placeholder='e-mail' />
         <textarea name='mes' placeholder='message'></textarea>
         <div className={styles.img}>
-            <ImgAdd onImgAdd={onImgAdd} storage={storage}/>
+            <ImgAdd onImgAdd={onImgAdd} storage={storage} name={file.fileName}/>
         </div>
         <button type='button' className={styles.add} name='add' onClick={addForm}>Add</button>
       </form>
