@@ -15,6 +15,10 @@ class Database {
     saveData(userId, card){
         firebaseDatabase.ref(`${userId}/${card.id}`).set(card);
     }
+
+    deleteData(userId, cardId){
+        firebaseDatabase.ref(`${userId}/${cardId}`).remove();
+    }
 }
 
 export default Database;

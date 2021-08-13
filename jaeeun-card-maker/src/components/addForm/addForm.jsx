@@ -25,13 +25,10 @@ const AddForm = ({ onAddForm, storage }) => {
     }
 
     const onImgAdd = (cardId, newFile) => {
-      console.log(newFile);
       setFile({
         fileName : newFile.fileName,
         fileURL : newFile.fileURL
       })
-
-      console.log(file);
     }
 
     return (

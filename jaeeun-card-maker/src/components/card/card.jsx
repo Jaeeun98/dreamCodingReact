@@ -38,6 +38,7 @@ const Card = ({ storage, auth, database }) => {
       })
 
       card[cardId].fileName && storage.imgDelete(card[cardId].fileName);
+      database.deleteData(userId, cardId);
 
     }
 
