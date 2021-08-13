@@ -9,6 +9,10 @@ class Auth {
         const provider = new firebase.auth[`${text}AuthProvider`]();
         return firebase.auth().signInWithPopup(provider);   
     }
+
+    authLogout(){
+        firebase.auth().signOut();
+    }
 }
 
 export default Auth;

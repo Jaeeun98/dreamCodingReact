@@ -40,6 +40,7 @@ function App({ auth, storage }) {
       fileURL : null
     },
   });
+
   const onAddForm = card => {
     setUser(user => {
       const update = {...user};
@@ -82,6 +83,7 @@ function App({ auth, storage }) {
               onDeleteForm={onDeleteForm}
               onImgAdd={onImgAdd}
               storage={storage}
+              auth={auth}
             />
           </Route>
         </Switch>

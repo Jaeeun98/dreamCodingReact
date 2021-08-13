@@ -5,10 +5,11 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './card.module.css';
 
-const Card = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
+const Card = ({ user, onAddForm, onDeleteForm, onImgAdd, storage, auth }) => {
+
     return (
       <section className={styles.card}>
-        <Header />
+        <Header auth={auth}/>
         <section className={styles.section}>
           <CardMaker
             user={user}

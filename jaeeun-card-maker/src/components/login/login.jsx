@@ -16,13 +16,17 @@ const Login = ({ auth }) => {
     }
 
 
-    const homeMove = () => {
-        history.push('/home');
+    const homeMove = (data) => {
+        history.push({
+          pathname : '/home',
+          state : data.user.uid
+        });
+        //uid = 특정 컴퓨터 사용자에게 부여되는 숫자 또는 이름이다.
     }
 
     return (
       <section className={styles.login}>
-        <Header />
+        <Header/>
         <section className={styles.section}>
           <h2>LOGIN</h2>
           <div className={styles.btn}>
