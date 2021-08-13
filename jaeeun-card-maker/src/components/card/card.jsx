@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CardMaker from '../cardMaker/cardMaker';
 import CardPreview from '../cardPreview/cardPreview';
@@ -8,48 +8,20 @@ import styles from './card.module.css';
 
 const Card = ({ storage, auth, database }) => {
 
-  const history = useHistory();
-  const userId = history.location.state;
+    const history = useHistory();
+    const userId = history.location.state;
 
+    const [card, setCard] = useState({});
 
-  const [user, setUser] = useState({
-      0: {
-        id: 0,
-        name: "jaeeun",
-        company: "kakao",
-        color: "light",
-        job: "frontend",
-        mail: "kju9705@gmail.com",
-        mes: "Hello",
-        fileName : null,
-        fileURL : null
-      },
-      1: {
-        id: 1,
-        name: "jaeeun2",
-        company: "kakao",
-        color: "light",
-        job: "frontend",
-        mail: "kju9705@gmail.com",
-        mes: "Hello",
-        fileName : null,
-        fileURL : null
-      },
-      2: {
-        id: 2,
-        name: "jaeeun3",
-        company: "kakao",
-        color: "light",
-        job: "frontend",
-        mail: "kju9705@gmail.com",
-        mes: "Hello",
-        fileName : null,
-        fileURL : null
-      },
-    });
+    useEffect(() => {
+      database.readData(userId, cards => {
+        setCard(cards);
+      });
+      
+    })
 
     const onAddForm = card => {
-      setUser(user => {
+      setCard(user => {
         const update = {...user};
         update[card.id] = card;
         return update;
@@ -59,18 +31,18 @@ const Card = ({ storage, auth, database }) => {
     }
 
     const onDeleteForm = cardId => {
-      setUser(user => {
+      setCard(user => {
         const update = {...user};
         delete update[cardId];
         return update;
       })
 
-      user[cardId].fileName && storage.imgDelete(user[cardId].fileName);
+      card[cardId].fileName && storage.imgDelete(card[cardId].fileName);
 
     }
 
     const onImgAdd = (cardId, file) => {
-      setUser(user => {
+      setCard(user => {
         const update = {...user};
         update[cardId].fileName = file.fileName
         update[cardId].fileURL = file.fileURL
@@ -83,13 +55,13 @@ const Card = ({ storage, auth, database }) => {
         <Header auth={auth}/>
         <section className={styles.section}>
           <CardMaker
-            user={user}
+            user={card}
             onAddForm={onAddForm}
             onDeleteForm={onDeleteForm}
             onImgAdd={onImgAdd}
             storage={storage}
           />
-          <CardPreview user={user} />
+          <CardPreview user={card} />
         </section>
         <Footer />
       </section>
