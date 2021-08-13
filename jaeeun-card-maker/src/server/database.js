@@ -1,9 +1,11 @@
 import firebase from 'firebase/app';
+import 'firebase/database';
 import firebaseApp from './firebase';
 
 class Database {
-    saveData(id, name, company, color, job, mail, mes){
-        const database = firebase.database();
+    saveData(userId, card){
+        firebase.database().ref(`${userId}/${card.id}`).set(card);
+        
     }
 }
 

@@ -4,70 +4,8 @@ import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router
 import Card from './components/card/card';
 import Login from './components/login/login';
 
-function App({ auth, storage }) {
-  const [user, setUser] = useState({
-    0: {
-      id: 0,
-      name: "jaeeun",
-      company: "kakao",
-      color: "light",
-      job: "frontend",
-      mail: "kju9705@gmail.com",
-      mes: "Hello",
-      fileName : null,
-      fileURL : null
-    },
-    1: {
-      id: 1,
-      name: "jaeeun2",
-      company: "kakao",
-      color: "light",
-      job: "frontend",
-      mail: "kju9705@gmail.com",
-      mes: "Hello",
-      fileName : null,
-      fileURL : null
-    },
-    2: {
-      id: 2,
-      name: "jaeeun3",
-      company: "kakao",
-      color: "light",
-      job: "frontend",
-      mail: "kju9705@gmail.com",
-      mes: "Hello",
-      fileName : null,
-      fileURL : null
-    },
-  });
-
-  const onAddForm = card => {
-    setUser(user => {
-      const update = {...user};
-      update[card.id] = card;
-      return update;
-    });
-  }
-
-  const onDeleteForm = cardId => {
-    setUser(user => {
-      const update = {...user};
-      delete update[cardId];
-      return update;
-    })
-
-    user[cardId].fileName && storage.imgDelete(user[cardId].fileName);
-    
-  }
-
-  const onImgAdd = (cardId, file) => {
-    setUser(user => {
-      const update = {...user};
-      update[cardId].fileName = file.fileName
-      update[cardId].fileURL = file.fileURL
-      return update
-    })
-  }
+function App({ auth, storage, database }) {
+  
 
   return (
     <div className="app">
@@ -78,12 +16,9 @@ function App({ auth, storage }) {
           </Route>
           <Route path="/home">
             <Card
-              user={user}
-              onAddForm={onAddForm}
-              onDeleteForm={onDeleteForm}
-              onImgAdd={onImgAdd}
               storage={storage}
               auth={auth}
+              database={database}
             />
           </Route>
         </Switch>

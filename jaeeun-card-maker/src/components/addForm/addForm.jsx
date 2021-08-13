@@ -24,7 +24,7 @@ const AddForm = ({ onAddForm, storage }) => {
         setFile({ fileName:null, fileURL:null });
     }
 
-    const onImgAdd = (cardId, newFile) => {
+    const onImgAdd = newFile => {
       setFile({
         fileName : newFile.fileName,
         fileURL : newFile.fileURL
