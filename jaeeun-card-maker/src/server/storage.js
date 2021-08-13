@@ -1,11 +1,9 @@
-import firebase from 'firebase/app';
-import 'firebase/storage';
-import firebaseApp from './firebase';
+import {firebaseStorage} from './firebase';
 
 class StorageImg {
 
     async imgAdd(files){
-        const storageRef = firebase.storage().ref();
+        const storageRef = firebaseStorage.ref();
         const upload = storageRef.child(files.name).put(files);
 
         const meta = await upload.snapshot.ref.getMetadata().then(data => data);
@@ -15,7 +13,7 @@ class StorageImg {
     }
 
     imgDelete(imgUrl){
-        const storageRef = firebase.storage().ref();
+        const storageRef = firebaseStorage.ref();
         storageRef.child(imgUrl).delete();
         
     }

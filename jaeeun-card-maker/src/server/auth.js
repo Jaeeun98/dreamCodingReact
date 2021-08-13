@@ -1,18 +1,24 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import firebaseApp from './firebase';  
-//초기화를 거쳐야
+import {firebaseAuth, githubProvider, googleProvider} from './firebase';
 
 class Auth {
 
     authLogin(text){
-        const provider = new firebase.auth[`${text}AuthProvider`]();
-        return firebase.auth().signInWithPopup(provider);   
+        const provider = this.getProvider(text)
+        return firebaseAuth.signInWithPopup(provider);   
     }
 
     authLogout(){
-        firebase.auth().signOut();
+        firebaseAuth.signOut();
     }
+
+    getProvider(name) {
+        switch (name) {
+          case 'Google': return googleProvider;
+          case 'Github': return githubProvider;
+    
+          default: throw new Error('not supported provider')
+        }
+      }
 }
 
 export default Auth;

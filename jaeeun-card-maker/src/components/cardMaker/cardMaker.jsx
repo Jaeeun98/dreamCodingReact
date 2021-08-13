@@ -14,16 +14,16 @@ const CardMaker = ({ user, onAddForm, onDeleteForm, onImgAdd, storage }) => {
             <h1>Card Maker</h1>
             {Object.values(user).map(value => (
                 <form key={value.id} className={`${value.id} ${styles.form}`} >
-                    <input type='text' name='name' value={value.name} />
-                    <input type='text' name='company' value={value.company} />
-                    <select name='color' value={value.color}>
-                        <option value='black'>Black</option>
-                        <option value='light'>Light</option>
-                        <option value='skyBlue'>SkyBlue</option>
+                    <input type='text' name='name' defaultValue={value.name} />
+                    <input type='text' name='company' defaultValue={value.company} />
+                    <select name='color' defaultValue={value.color}>
+                        <option defaultValue='black'>Black</option>
+                        <option defaultValue='light'>Light</option>
+                        <option defaultValue='skyBlue'>SkyBlue</option>
                     </select>
-                    <input type='text' name='job' value={value.job} />
-                    <input type='text' name='mail' value={value.mail} />
-                    <textarea name='mes' value={value.mes}></textarea>
+                    <input type='text' name='job' defaultValue={value.job} />
+                    <input type='text' name='mail' defaultValue={value.mail} />
+                    <textarea name='mes' defaultValue={value.mes}></textarea>
                     <div className={styles.img}>
                         <ImgAdd onImgAdd={onImgAdd} storage={storage} name={value.fileName}/>
                     </div>

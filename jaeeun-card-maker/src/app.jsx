@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './app.css';
-import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Card from './components/card/card';
 import Login from './components/login/login';
 
