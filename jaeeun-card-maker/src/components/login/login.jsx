@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './login.module.css';
 import Header from '../header/header';
@@ -7,14 +7,11 @@ import Footer from '../footer/footer';
 
 const Login = ({ auth }) => {
 
-    const [user, setUser] = useState();
-
     const history = useHistory();
     const login = (e) => {
         auth.authLogin(e.target.innerText)
         .then(data => homeMove(data)); 
     }
-
 
     const homeMove = (data) => {
         history.push({

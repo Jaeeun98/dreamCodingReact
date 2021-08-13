@@ -14,11 +14,11 @@ const Card = ({ storage, auth, database }) => {
     const [card, setCard] = useState({});
 
     useEffect(() => {
-      database.readData(userId, cards => {
+      const stopSync = database.readData(userId, cards => {
         setCard(cards);
       });
-      
-    })
+      return () => stopSync();
+    }, [userId, database])
 
     const onAddForm = card => {
       setCard(user => {

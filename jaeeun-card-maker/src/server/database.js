@@ -8,9 +8,9 @@ class Database {
         const database = firebase.database().ref(userId);
         database.on('value', snapshot => {
             const data = snapshot.val();
-            
             data && onUpdate(data);
         })
+        return () => database.off();
         
     }
 
