@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 const Home = (props) => {
     const history = useHistory();
+    console.log(props);
     return (
     <>
         <h1>Home</h1>
